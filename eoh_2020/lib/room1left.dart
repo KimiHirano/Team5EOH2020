@@ -16,28 +16,37 @@ class _Room1LeftPageState extends State<Room1LeftPage> {
         title: Text('Left Page')
       ),
       body: 
-
-      Center(
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
+      Container(
+        decoration: BoxDecoration(
+              image: DecorationImage(
+                  image: AssetImage("images/Room1LeftPic.jpg"), fit: BoxFit.cover)),
+      child: Container(
+        child:
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
+            Column(),
+            Column(),
             Column(
               mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                FloatingActionButton(
-                  heroTag: 'Right',
-                  onPressed: () {
-                        Navigator.pop(context);
-                  },
-                  tooltip: 'Right',
-                  child: 
-                    Icon(Icons.keyboard_arrow_right),      
-                ),
-              ],
-            )
-          ],
-        ),
-      ),
-    );
+              crossAxisAlignment: CrossAxisAlignment.end,
+              children: <Widget> [
+                Align(
+                  alignment: Alignment.centerRight,
+                  child: FloatingActionButton(
+                        heroTag: 'Right',
+                        onPressed: () {
+                              Navigator.pop(context);
+                        },
+                        tooltip: 'Right',
+                        child: 
+                          Icon(Icons.keyboard_arrow_right),      
+                  ), ),
+            ],
+            ),
+            ],)            
+        ), 
+     ),
+     );
   }
 }
