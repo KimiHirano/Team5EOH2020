@@ -28,9 +28,14 @@ class _Room1CenterPageState extends State<Room1CenterPage> {
         // the App.build method, and use it to set our appbar title.
         // title: Text(widget.title),
       ),
-      body: Center(
+      body:
+      Container(
+        decoration: BoxDecoration(
+            image:DecorationImage(
+              image: AssetImage("image/white_board.jpg"), fit:BoxFit.cover)),
         // Center is a layout widget. It takes a single child and positions it
         // in the middle of the parent.
+        child:Container(
         child: Row(
           // Invoke "debug painting" (press "p" in the console, choose the
           // "Toggle Debug Paint" action from the Flutter Inspector in Android
@@ -90,6 +95,7 @@ class _Room1CenterPageState extends State<Room1CenterPage> {
             )
           ],
         ),
+      ),
       ),
      // This trailing comma makes auto-formatting nicer for build methods.
     );
