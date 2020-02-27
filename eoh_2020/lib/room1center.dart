@@ -32,7 +32,7 @@ class _Room1CenterPageState extends State<Room1CenterPage> {
       Container(
         decoration: BoxDecoration(
             image:DecorationImage(
-              image: AssetImage("image/white_board.jpg"), fit:BoxFit.cover)),
+              image: AssetImage("images/white_board.jpg"), fit:BoxFit.cover)),
         // Center is a layout widget. It takes a single child and positions it
         // in the middle of the parent.
         child:Container(
