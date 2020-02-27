@@ -24,9 +24,10 @@ class _Room1CenterPageState extends State<Room1CenterPage> {
     // than having to individually change instances of widgets.
     return Scaffold(
       appBar: AppBar(
+
         // Here we take the value from the MyHomePage object that was created by
         // the App.build method, and use it to set our appbar title.
-        // title: Text(widget.title),
+        title: Text('Welcome to Sieble'),
       ),
       body:
       Container(
@@ -63,9 +64,6 @@ class _Room1CenterPageState extends State<Room1CenterPage> {
             Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                Text(
-                  'Welcome to Escape Siebel',
-                ),
                 FloatingActionButton(
                   heroTag: 'Bottom',
                   onPressed: () {
