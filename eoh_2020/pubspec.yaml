@@ -59,6 +59,9 @@ flutter:
     - family: Demode
       fonts:
         - asset: fonts/Demode.ttf
+    - family: RobotCrush
+      fonts:
+        - asset: fonts/RobotCrush.ttf
   #       - asset: fonts/Schyler-Italic.ttf
   #         style: italic
   #   - family: Trajan Pro
