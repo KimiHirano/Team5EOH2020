@@ -45,8 +45,8 @@ class _Room1RightPageState extends State<Room1RightPage> {
               animate: true,
               curve: Curves.fastOutSlowIn,
             ),
-            bottom: 240,
-            left: 10,
+            bottom: size.height*0.32,
+            left: size.width*0.04,
           ),
           Positioned.fill(
             child: Align(
