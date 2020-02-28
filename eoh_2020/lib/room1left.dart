@@ -67,6 +67,16 @@ class MyStack extends StatelessWidget {
                   onTap: () => showSnackBar(context, "Sorry, this door is locked.\n You do not have the key."),
                 )),
           ),
+          Positioned(
+            top: 125,
+            left: 185,
+            width: 175,
+            height: 115,
+            child: Container(
+                child: GestureDetector(
+                  onTap: () => showSnackBar(context, "It looks like the projector is off.\n Maybe something will turn it on."),
+                )),
+          ),
         ],
       ),
     );
