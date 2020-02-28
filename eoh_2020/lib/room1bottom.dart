@@ -25,17 +25,15 @@ class _Room1BottomPageState extends State<Room1BottomPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-     // appBar: AppBar(
-       // title: Text('Bottom Page')
-     // ),
-      body: Center(
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
+      body: Container(
+        decoration: new BoxDecoration(color: Colors.black),
+        child: Container(
+          child: Stack(
           children: <Widget>[
-            Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                FloatingActionButton(
+            Positioned.fill(
+              child: Align(
+              alignment: Alignment.topCenter,
+              child: FloatingActionButton(
                   heroTag: 'Up',
                   onPressed: () {
                         Navigator.pop(context);
@@ -44,10 +42,11 @@ class _Room1BottomPageState extends State<Room1BottomPage> {
                   child: 
                     Icon(Icons.keyboard_arrow_up),      
                 ),
-              ],
-            )
+              ),     
+              ),
           ],
         ),
+      ),
       ),
     );
   }
