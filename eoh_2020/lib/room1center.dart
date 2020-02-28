@@ -24,13 +24,19 @@ class _Room1CenterPageState extends State<Room1CenterPage> {
     // than having to individually change instances of widgets.
     return Scaffold(
       appBar: AppBar(
+
         // Here we take the value from the MyHomePage object that was created by
         // the App.build method, and use it to set our appbar title.
-        // title: Text(widget.title),
+        title: Text('Welcome to Sieble'),
       ),
-      body: Center(
+      body:
+      Container(
+        decoration: BoxDecoration(
+            image:DecorationImage(
+              image: AssetImage("images/white_board.jpg"), fit:BoxFit.cover)),
         // Center is a layout widget. It takes a single child and positions it
         // in the middle of the parent.
+        child:Container(
         child: Row(
           // Invoke "debug painting" (press "p" in the console, choose the
           // "Toggle Debug Paint" action from the Flutter Inspector in Android
@@ -58,9 +64,6 @@ class _Room1CenterPageState extends State<Room1CenterPage> {
             Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                Text(
-                  'Welcome to Escape Siebel',
-                ),
                 FloatingActionButton(
                   heroTag: 'Bottom',
                   onPressed: () {
@@ -90,6 +93,7 @@ class _Room1CenterPageState extends State<Room1CenterPage> {
             )
           ],
         ),
+      ),
       ),
      // This trailing comma makes auto-formatting nicer for build methods.
     );
