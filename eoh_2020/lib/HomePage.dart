@@ -10,6 +10,7 @@ class HomePage extends StatefulWidget {
   _HomePageState createState() => _HomePageState();
 }
 
+//the start page for the escape room
 class _HomePageState extends State<HomePage> {
 
   @override
@@ -21,43 +22,61 @@ class _HomePageState extends State<HomePage> {
     // fast, so that you can just rebuild anything that needs updating rather
     // than having to individually change instances of widgets.
     return Scaffold(
-      appBar: AppBar(
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
-        title: Text(widget.title),
-      ),
-      body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
-        child: Row(
-          // Invoke "debug painting" (press "p" in the console, choose the
-          // "Toggle Debug Paint" action from the Flutter Inspector in Android
-          // Studio, or the "Toggle Debug Paint" command in Visual Studio Code)
-          // to see the wireframe for each widget.
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                Text(
-                  'Welcome to Escape Siebel',
+
+      body: Stack (
+        children: <Widget>[
+
+          //the background image
+          Container (
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage("images/siebel_out.png"),
+                fit: BoxFit.cover,
                 ),
-                FloatingActionButton(
-                  heroTag: 'Enter',
-                  onPressed: () {
-                      Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => Room1CenterPage()),
-                      );
-                  },
-                  tooltip: 'Bottom',
-                  child:Icon(Icons.play_arrow),      
-                ),
-              ],
             ),
-          ],
-        ),
+          ),
+          
+          //ESCAPE FROM SIEBEL text
+          Container(
+            width: 200,
+            height: 300,
+            alignment: Alignment.center,
+            padding: EdgeInsets.only(top: 24),
+            child: Text(
+                'Escape From Siebel',
+                style: TextStyle(fontFamily: 'Demode', fontSize: 50),
+              ),
+          ),
+
+          //enter button
+          Center(child: EnterButton(),)         
+          
+        ],
       ),
      // This trailing comma makes auto-formatting nicer for build methods.
+    );
+  }
+}
+
+class EnterButton extends StatelessWidget {
+  @override
+  Widget build (BuildContext context) {
+    return GestureDetector (
+      //when the button is tapped, enter the escape room
+      onTap: () {
+        Navigator.push(context, MaterialPageRoute(builder: (context) => Room1CenterPage()));
+      },
+
+      //the button
+      child: Container (
+              padding: EdgeInsets.all(12),
+              decoration: BoxDecoration(
+                color: Colors.cyan[100],
+                borderRadius: BorderRadius.circular(8),
+              ),
+              child: Text('Enter'),
+      ), 
+
     );
   }
 }
