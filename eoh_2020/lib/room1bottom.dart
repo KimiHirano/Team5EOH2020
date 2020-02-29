@@ -1,53 +1,72 @@
 import 'package:flutter/material.dart';
 
 class Room1BottomPage extends StatefulWidget {
-
   @override
   _Room1BottomPageState createState() => _Room1BottomPageState();
 }
 
 class _Room1BottomPageState extends State<Room1BottomPage> {
-  int evar = 0100;         // 4    // E
-  int evar2 = 0101;        // 5
+  var evar = '0100'; // 4    // E
+  var evar2 = '0101'; // 5
 
-  int ovar = 0100;         // 4    // O
-  int ovar2 = 1111;        // 15
+  var ovar = '0100'; // 4    // O
+  var ovar2 = '1111'; // 15
 
-  int hvar = 0100;         // 4    // H
-  int hvar2 = 1000;        // 8
+  var hvar = '0100'; // 4    // H
+  var hvar2 = '1000'; // 8
 
-  int tvar = 0011;         // 3    // 2 x 2
-  int tvar2 = 0010;        // 2
+  var tvar = '0011'; // 3    // 2 x 2
+  var tvar2 = '0010'; // 2
 
-  int zvar = 0011;         // 3    // 0 x 2
-  int zvar2 = 0000;        // 0
-
+  var zvar = '0011'; // 3    // 0 x 2
+  var zvar2 = '0000'; // 0
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        decoration: new BoxDecoration(color: Colors.black),
-        child: Container(
+        decoration: new BoxDecoration(color: Colors.white),
           child: Stack(
-          children: <Widget>[
-            Positioned.fill(
-              child: Align(
-              alignment: Alignment.topCenter,
-              child: FloatingActionButton(
-                  heroTag: 'Up',
-                  onPressed: () {
-                        Navigator.pop(context);
-                  },
-                  tooltip: 'Up',
-                  child: 
-                    Icon(Icons.keyboard_arrow_up),      
+            children: <Widget>[
+              Positioned.fill(
+                child: Align(
+                  alignment: Alignment.bottomCenter,
+                  child: inputText((String text){
+                      print(text);
+                  }),
                 ),
-              ),     
               ),
-          ],
+              Positioned.fill(
+                child: Align(
+                  alignment: Alignment.topCenter,
+                  child: FloatingActionButton(
+                    heroTag: 'Up',
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                    tooltip: 'Up',
+                    child: Icon(Icons.keyboard_arrow_up),
+                  ),
+                ),
+              ),
+            ],
         ),
-      ),
       ),
     );
   }
 }
+
+Widget inputText(Function doSomething) {
+  return Column(
+    children: [
+      Container(
+        width: 100,
+        child: TextField(
+          onChanged: (text) {
+            doSomething(text);
+          },
+        ),
+      )
+    ],
+  );
+}
+
