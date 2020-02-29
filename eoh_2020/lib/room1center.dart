@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'room1left.dart';
 import 'room1right.dart';
-import 'suduku.dart';
+import 'sudoku.dart';
 import 'room1bottom.dart';
 
 class Room1CenterPage extends StatefulWidget {
@@ -51,12 +51,12 @@ class _Room1CenterPageState extends State<Room1CenterPage> {
               child:FloatingActionButton(
                 heroTag: 'Right',
                 onPressed:(){
-                  Navigator.pop(context);
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => Room1RightPage()));
                 },
                 tooltip:'Right',
                 child:Icon(Icons.keyboard_arrow_right),  
                 ),
-              ),
+            ),
             Positioned(
               top:50,
               bottom:50,
@@ -64,12 +64,13 @@ class _Room1CenterPageState extends State<Room1CenterPage> {
               child:FloatingActionButton(
                 heroTag: 'Left',
                 onPressed:(){
-                  Navigator.pop(context);
+                 Navigator.push(context, MaterialPageRoute(builder: (context) => Room1LeftPage()));
                 },
                 tooltip:'Left',
                 child:Icon(Icons.keyboard_arrow_left),  
                 ),
-              ),
+              
+            ),
              Positioned(
               left:50,
               right:50,
@@ -77,21 +78,13 @@ class _Room1CenterPageState extends State<Room1CenterPage> {
               child:FloatingActionButton(
                 heroTag: 'Bottom',
                 onPressed:(){
-                  Navigator.pop(context);
+                 Navigator.push(context, MaterialPageRoute(builder: (context) => Room1BottomPage()));
                 },
                 tooltip:'Bottom',
                 child:Icon(Icons.keyboard_arrow_down),  
                 ),
-              ), 
-              Positioned(
-                left:20,
-                top:30,
-                child:GestureDetector(
-                  onTap:(){
-                     Navigator.push(context, MaterialPageRoute(builder: (context) => sudukuPage()));
-                  }
-                )
-              )
+               
+             ),
           ],
         ),
       ),
