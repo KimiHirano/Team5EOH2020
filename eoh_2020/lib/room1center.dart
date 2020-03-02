@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'room1left.dart';
 import 'room1right.dart';
+import 'sudoku.dart';
 import 'room1bottom.dart';
 
 class Room1CenterPage extends StatefulWidget {
@@ -37,60 +38,53 @@ class _Room1CenterPageState extends State<Room1CenterPage> {
         // Center is a layout widget. It takes a single child and positions it
         // in the middle of the parent.
         child:Container(
-        child: Row(
+        child: Stack(
           // Invoke "debug painting" (press "p" in the console, choose the
           // "Toggle Debug Paint" action from the Flutter Inspector in Android
           // Studio, or the "Toggle Debug Paint" command in Visual Studio Code)
           // to see the wireframe for each widget.
-          mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                FloatingActionButton(
-                  heroTag: 'Left',
-                  onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => Room1LeftPage()),
-                      );
-                  },
-                  tooltip: 'Left',
-                  child: 
-                    Icon(Icons.keyboard_arrow_left),      
+            Positioned(
+              top:50,
+              bottom:50,
+              right:10,
+              child:FloatingActionButton(
+                heroTag: 'Right',
+                onPressed:(){
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => Room1RightPage()));
+                },
+                tooltip:'Right',
+                child:Icon(Icons.keyboard_arrow_right),  
                 ),
-              ],
             ),
-            Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                FloatingActionButton(
-                  heroTag: 'Bottom',
-                  onPressed: () {
-                      Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => Room1BottomPage()),
-                      );
-                  },
-                  tooltip: 'Bottom',
-                  child:Icon(Icons.keyboard_arrow_down),      
+            Positioned(
+              top:50,
+              bottom:50,
+              left:10,
+              child:FloatingActionButton(
+                heroTag: 'Left',
+                onPressed:(){
+                 Navigator.push(context, MaterialPageRoute(builder: (context) => Room1LeftPage()));
+                },
+                tooltip:'Left',
+                child:Icon(Icons.keyboard_arrow_left),  
                 ),
-              ],
+              
             ),
-            Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                FloatingActionButton(
-                  heroTag: 'Right',
-                  onPressed: () {
-                      Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => Room1RightPage()),
-                      );
-                  },
-                  tooltip: 'Right',
-                  child:Icon(Icons.keyboard_arrow_right),      
+             Positioned(
+              left:50,
+              right:50,
+              bottom:10,
+              child:FloatingActionButton(
+                heroTag: 'Bottom',
+                onPressed:(){
+                 Navigator.push(context, MaterialPageRoute(builder: (context) => Room1BottomPage()));
+                },
+                tooltip:'Bottom',
+                child:Icon(Icons.keyboard_arrow_down),  
                 ),
-              ],
-            )
+               
+             ),
           ],
         ),
       ),
