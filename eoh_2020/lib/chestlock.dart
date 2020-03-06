@@ -1,6 +1,7 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:pinput/pin_put/pin_put.dart';
 
 class Room1RightPageChest extends StatefulWidget {
 
@@ -27,15 +28,24 @@ class _Room1RightPageChestState extends State<Room1RightPageChest> {
           Container(
             color: Color.fromRGBO(0, 0, 0, 0.8),
           ),
-          // Positioned(
-          //   child: Row(children: <Widget>[
-          //     MaterialButton(
-          //       shape: CircleBorder(),
-          //       on
-          //     ),
-
-          //   ],),
-          // ),
+          Padding(
+              padding: const EdgeInsets.all(40.0),
+              child: Center(
+                child: PinPut(
+                  fieldsCount: 4,
+                  inputDecoration: InputDecoration(
+                    focusedBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.white),
+                    ),
+                    enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.white)
+                    ),
+                  ),
+                  textStyle: TextStyle(color: Colors.white),
+                  onSubmit: (String pin) => validate(pin, context),
+                ),
+              ),
+          ),
           Positioned.fill(
             child: Align(
             alignment: Alignment.bottomCenter,
@@ -55,23 +65,56 @@ class _Room1RightPageChestState extends State<Room1RightPageChest> {
     );
   }
 
-  Widget patternlock() {
-    return Stack(
-      children: <Widget>[
-        Positioned(
-          child: GestureDetector(
-            onPanStart: (DragStartDetails details){
-              
-            },
-            onPanUpdate: (DragUpdateDetails details) {
+  // void createCircle(){
+  //   new Container(
+  //     decoration: new B,
+  //   );
+  // }
 
-            },
-            onPanEnd: (DragEndDetails details) {
-              
-            },
+  void validate(String pin, BuildContext context){
+    String expected = '1234';
+    
+    final snackBar = SnackBar(
+      duration: Duration(seconds: 5),
+      content: Container(
+        height: 80.0,
+        child: Center(
+          child: Text('Wrong input. Value: $pin,',
+          style:  TextStyle(fontSize: 25.0, 
+                  color: Colors.white
+                  ),  
           ),
         ),
-      ],
+      ),
+      backgroundColor: Colors.lightGreenAccent,
     );
+    Scaffold.of(context).showSnackBar(snackBar);
   }
 }
+//   Widget patternlock() {
+//     return Stack(
+//       children: <Widget>[
+//         Positioned(
+//           child: GestureDetector(
+//             onPanStart: (DragStartDetails details){
+              
+//             },
+//             onPanUpdate: (DragUpdateDetails details) {
+
+//             },
+//             onPanEnd: (DragEndDetails details) {
+              
+//             },
+//           ),
+//         ),
+//       ],
+//     );
+//   }
+// }
+
+// class Password{
+
+//   int circle_amount;
+//   List<int> expect = [];
+//   Password(){};
+// }
