@@ -12,12 +12,12 @@ class _Room1BottomPageState  extends State<Room1BottomPage>  {
   int numberOfTries = 0;
   int numberOfTimes = 3;
 
-  var x = '69';
-  var evar = 01000101; // 69    // E
-  var ovar = 01001111; // 79    // O
-  var hvar = 01001000; // 72    // H
+  var x = '9';
+  var evar = 1001; // 9    // E
+  var ovar = 10100; // 20    // O
+  var hvar = 1100; // 12    // H
 
-  final guessedNumber = new TextEditingController();
+  final guessedbinary = new TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -66,7 +66,7 @@ class _Room1BottomPageState  extends State<Room1BottomPage>  {
                   cursorColor: Colors.greenAccent,
                   style: TextStyle(color: Colors.greenAccent),
                   inputFormatters: [WhitelistingTextInputFormatter.digitsOnly],
-                  controller: guessedNumber),
+                  controller: guessedbinary,)
             ),
             Container(
               child: RaisedButton(
@@ -106,10 +106,10 @@ class _Room1BottomPageState  extends State<Room1BottomPage>  {
       return;
     }
 
-    int guess = int.parse(guessedNumber.text);
-    if (guess.toString().length > 8) {
+    int guess = int.parse(guessedbinary.text);
+    if (guess.toString().length > 5) {
       makeToast("Your binary is too long!");
-      guessedNumber.clear();
+      guessedbinary.clear();
       return;
     }
 
@@ -119,42 +119,41 @@ class _Room1BottomPageState  extends State<Room1BottomPage>  {
     if(numberOfTimes == numberOfTries){
       makeToast('Aww you ran out of tries, but here is an E');
       numberOfTries = 0;
-      guessedNumber.clear();
+      guessedbinary.clear();
       return;
     }
     makeToast("Try again, your number of tries is $numberOfTries");
   } else{
     makeToast("That's correct, you earn an E.");
-      x = '79';
-      guessedNumber.clear();
-
+      x = '20';
+      guessedbinary.clear();
   }
 
   if (guess != ovar){
     if(numberOfTimes == numberOfTries){
       makeToast('Aww you ran out of tries, but here is an O');
       numberOfTries = 0;
-      guessedNumber.clear();
+      guessedbinary.clear();
       return;
     }
       makeToast("Try again, your number of tries is $numberOfTries");
   } else{
     makeToast("That's correct, you earn an O.");
-    x = '72';
-    guessedNumber.clear();
+    x = '12';
+    guessedbinary.clear();
   }
 
  if (guess != hvar){
    if(numberOfTimes == numberOfTries){
       makeToast('Aww you ran out of tries, but here is an H');
       numberOfTries = 0;
-      guessedNumber.clear();
+      guessedbinary.clear();
       return;
     }
       makeToast("Try again, your number of tries is $numberOfTries");
   } else{
     makeToast("That's correct, you earn an H. Congrats! You have collected all the letters. The projector turns on");
-    guessedNumber.clear();
+    guessedbinary.clear();
   }
 
   }
@@ -168,7 +167,7 @@ class _Room1BottomPageState  extends State<Room1BottomPage>  {
   }
 
   bool isEmpty() {
-    return guessedNumber.text.isEmpty;
+    return guessedbinary.text.isEmpty;
   }
 }
 
