@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'room1left.dart';
 import 'room1right.dart';
+import 'sudoku.dart';
 import 'room1bottom.dart';
 
 class Room1CenterPage extends StatefulWidget {
@@ -24,72 +25,69 @@ class _Room1CenterPageState extends State<Room1CenterPage> {
     // than having to individually change instances of widgets.
     return Scaffold(
       appBar: AppBar(
+
         // Here we take the value from the MyHomePage object that was created by
         // the App.build method, and use it to set our appbar title.
-        // title: Text(widget.title),
+        title: Text('Welcome to Sieble'),
       ),
-      body: Center(
+      body:
+      Container(
+        decoration: BoxDecoration(
+            image:DecorationImage(
+              image: AssetImage("images/white_board.jpg"), fit:BoxFit.cover)),
         // Center is a layout widget. It takes a single child and positions it
         // in the middle of the parent.
-        child: Row(
+        child:Container(
+        child: Stack(
           // Invoke "debug painting" (press "p" in the console, choose the
           // "Toggle Debug Paint" action from the Flutter Inspector in Android
           // Studio, or the "Toggle Debug Paint" command in Visual Studio Code)
           // to see the wireframe for each widget.
-          mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                FloatingActionButton(
-                  heroTag: 'Left',
-                  onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => Room1LeftPage()),
-                      );
-                  },
-                  tooltip: 'Left',
-                  child: 
-                    Icon(Icons.keyboard_arrow_left),      
+            Positioned(
+              top:50,
+              bottom:50,
+              right:10,
+              child:FloatingActionButton(
+                heroTag: 'Right',
+                onPressed:(){
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => Room1RightPage()));
+                },
+                tooltip:'Right',
+                child:Icon(Icons.keyboard_arrow_right),  
                 ),
-              ],
             ),
-            Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                Text(
-                  'Welcome to Escape Siebel',
+            Positioned(
+              top:50,
+              bottom:50,
+              left:10,
+              child:FloatingActionButton(
+                heroTag: 'Left',
+                onPressed:(){
+                 Navigator.push(context, MaterialPageRoute(builder: (context) => Room1LeftPage()));
+                },
+                tooltip:'Left',
+                child:Icon(Icons.keyboard_arrow_left),  
                 ),
-                FloatingActionButton(
-                  heroTag: 'Bottom',
-                  onPressed: () {
-                      Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => Room1BottomPage()),
-                      );
-                  },
-                  tooltip: 'Bottom',
-                  child:Icon(Icons.keyboard_arrow_down),      
-                ),
-              ],
+              
             ),
-            Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                FloatingActionButton(
-                  heroTag: 'Right',
-                  onPressed: () {
-                      Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => Room1RightPage()),
-                      );
-                  },
-                  tooltip: 'Right',
-                  child:Icon(Icons.keyboard_arrow_right),      
+             Positioned(
+              left:50,
+              right:50,
+              bottom:10,
+              child:FloatingActionButton(
+                heroTag: 'Bottom',
+                onPressed:(){
+                 Navigator.push(context, MaterialPageRoute(builder: (context) => Room1BottomPage()));
+                },
+                tooltip:'Bottom',
+                child:Icon(Icons.keyboard_arrow_down),  
                 ),
-              ],
-            )
+               
+             ),
           ],
         ),
+      ),
       ),
      // This trailing comma makes auto-formatting nicer for build methods.
     );
