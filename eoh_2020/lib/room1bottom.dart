@@ -88,7 +88,7 @@ class _Room1BottomPageState  extends State<Room1BottomPage>  {
                 ' Instructions on how to convert a number to binary: divide the number by 2, the remainder will be 0 or 1 and continue to divide till the division is zero.',
                 style: TextStyle(
                     fontFamily: 'RobotCrush', 
-                    fontSize: 15.0,
+                    fontSize: 13.0,
                     color: Colors.greenAccent),
               ),
             ),
@@ -113,49 +113,35 @@ class _Room1BottomPageState  extends State<Room1BottomPage>  {
       return;
     }
 
-    numberOfTries++;
+  numberOfTries++;
 
-  if (guess != evar){
+  if(guess == evar){
+    makeToast("That's correct, you earn an E.");
+      setState((){
+        x = '20';
+        });
+      guessedbinary.clear();
+
+  }else if (guess == ovar) {
+       makeToast("That's correct, you earn an O.");
+    setState((){
+      x = '12';
+    });
+    guessedbinary.clear();
+
+  } else if (guess == hvar){
+    makeToast("That's correct, you earn an H. Congrats! You have collected all the letters. The projector turns on");
+    guessedbinary.clear();
+
+  } else if (guess != evar && guess != ovar && guess != hvar){
     if(numberOfTimes == numberOfTries){
-      makeToast('Aww you ran out of tries, but here is an E');
+      makeToast('Aww you ran out of tries, but here is an letter');
       numberOfTries = 0;
       guessedbinary.clear();
       return;
     }
     makeToast("Try again, your number of tries is $numberOfTries");
-  } else{
-    makeToast("That's correct, you earn an E.");
-      x = '20';
-      guessedbinary.clear();
   }
-
-  if (guess != ovar){
-    if(numberOfTimes == numberOfTries){
-      makeToast('Aww you ran out of tries, but here is an O');
-      numberOfTries = 0;
-      guessedbinary.clear();
-      return;
-    }
-      makeToast("Try again, your number of tries is $numberOfTries");
-  } else{
-    makeToast("That's correct, you earn an O.");
-    x = '12';
-    guessedbinary.clear();
-  }
-
- if (guess != hvar){
-   if(numberOfTimes == numberOfTries){
-      makeToast('Aww you ran out of tries, but here is an H');
-      numberOfTries = 0;
-      guessedbinary.clear();
-      return;
-    }
-      makeToast("Try again, your number of tries is $numberOfTries");
-  } else{
-    makeToast("That's correct, you earn an H. Congrats! You have collected all the letters. The projector turns on");
-    guessedbinary.clear();
-  }
-
   }
 
   void makeToast(String feedback) {
@@ -171,55 +157,3 @@ class _Room1BottomPageState  extends State<Room1BottomPage>  {
   }
 }
 
-
-
-// class _Room1BottomPageState extends State<Room1BottomPage> {
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       body: Container(
-//         decoration: new BoxDecoration(color: Colors.white),
-//           child: Stack(
-//             children: <Widget>[
-//               Positioned.fill(
-//                 child: Align(
-//                   alignment: Alignment.bottomCenter,
-//                   child: inputText((String text){
-//                       print(text);
-//                   }),
-//                 ),
-//               ),
-//               // Positioned.fill(
-//               //   child: Align(
-//               //     alignment: Alignment.topCenter,
-//               //     child: FloatingActionButton(
-//               //       heroTag: 'Up',
-//               //       onPressed: () {
-//               //         Navigator.pop(context);
-//               //       },
-//               //       tooltip: 'Up',
-//               //       child: Icon(Icons.keyboard_arrow_up),
-//               //     ),
-//               //   ),
-//               // ),
-//             ],
-//         ),
-//       ),
-//     );
-//   }
-// }
-
-// Widget inputText(Function doSomething) {
-//   return Column(
-//     children: [
-//       Container(
-//         width: 200,
-//         child: TextField(
-//           onChanged: (text) {
-//             doSomething(text);
-//           },
-//         ),
-//       )
-//     ],
-//   );
-// }
