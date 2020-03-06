@@ -3,6 +3,7 @@ import 'room1left.dart';
 import 'room1right.dart';
 import 'sudoku.dart';
 import 'room1bottom.dart';
+import 'package:avatar_glow/avatar_glow.dart';
 
 class Room1CenterPage extends StatefulWidget {
   // Room1CenterPage({Key key, this.title}) : super(key: key);
@@ -17,6 +18,7 @@ class _Room1CenterPageState extends State<Room1CenterPage> {
 
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
     // This method is rerun every time setState is called, for instance as done
     // by the _incrementCounter method above.
     //
@@ -44,6 +46,21 @@ class _Room1CenterPageState extends State<Room1CenterPage> {
           // Studio, or the "Toggle Debug Paint" command in Visual Studio Code)
           // to see the wireframe for each widget.
           children: <Widget>[
+            Positioned.fill(
+              top:80,
+              bottom:400,
+              right:50,
+              child: MaterialButton(
+                onPressed: (){
+                  Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => SudokuPage()),
+                  );
+                },
+                elevation: 10.0,
+                child: Image.asset('images/soduku.png', height: 100),
+              ),
+              
+          ),
             Positioned(
               top:50,
               bottom:50,
