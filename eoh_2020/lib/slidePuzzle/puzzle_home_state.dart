@@ -96,7 +96,7 @@ class PuzzleHomeState extends State
                 child: FittedBox(
                   fit: BoxFit.cover,
                   child: Image(
-                    image: AssetImage('images/Stadium.jpg'),
+                    image: AssetImage('images/Room1LeftPic.jpg'),
                   ),
                 ),
               ),
