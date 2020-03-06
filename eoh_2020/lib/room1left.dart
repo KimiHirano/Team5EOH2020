@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:eoh_2020/slidePuzzle/slidePuzzleMain.dart';
 
 class Room1LeftPage extends StatefulWidget {
   @override
@@ -74,7 +75,8 @@ class MyStack extends StatelessWidget {
             height: 115,
             child: Container(
                 child: GestureDetector(
-                  onTap: () => showSnackBar(context, "It looks like the projector is off.\n Maybe something will turn it on."),
+                  onTap: () =>  Navigator.push(context, MaterialPageRoute(builder: (context) => PuzzleHome(3,3))),
+                  //onTap: () => showSnackBar(context, "It looks like the projector is off.\n Maybe something will turn it on."),
                 )),
           ),
         ],
