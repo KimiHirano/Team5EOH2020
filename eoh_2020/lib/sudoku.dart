@@ -84,8 +84,7 @@ class _SudokuPageState extends State<SudokuPage>{
   Widget build(BuildContext context){
     return Scaffold(appBar: AppBar(title:Text('Welcome to Soduku')),
     body: Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      crossAxisAlignment: CrossAxisAlignment.stretch,
+      mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: <Widget>[
          Container( 
           child:GridView.builder(
