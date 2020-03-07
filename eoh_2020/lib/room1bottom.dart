@@ -12,12 +12,12 @@ class _Room1BottomPageState  extends State<Room1BottomPage>  {
   int numberOfTries = 0;
   int numberOfTimes = 3;
 
-  var x = '69';
-  var evar = 01000101; // 69    // E
-  var ovar = 01001111; // 79    // O
-  var hvar = 01001000; // 72    // H
+  var x = '9';
+  var evar = 1001; // 9    // E
+  var ovar = 10100; // 20    // O
+  var hvar = 1100; // 12    // H
 
-  final guessedNumber = new TextEditingController();
+  final guessedbinary = new TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -66,7 +66,7 @@ class _Room1BottomPageState  extends State<Room1BottomPage>  {
                   cursorColor: Colors.greenAccent,
                   style: TextStyle(color: Colors.greenAccent),
                   inputFormatters: [WhitelistingTextInputFormatter.digitsOnly],
-                  controller: guessedNumber),
+                  controller: guessedbinary,)
             ),
             Container(
               child: RaisedButton(
@@ -88,7 +88,7 @@ class _Room1BottomPageState  extends State<Room1BottomPage>  {
                 ' Instructions on how to convert a number to binary: divide the number by 2, the remainder will be 0 or 1 and continue to divide till the division is zero.',
                 style: TextStyle(
                     fontFamily: 'RobotCrush', 
-                    fontSize: 15.0,
+                    fontSize: 13.0,
                     color: Colors.greenAccent),
               ),
             ),
@@ -106,57 +106,42 @@ class _Room1BottomPageState  extends State<Room1BottomPage>  {
       return;
     }
 
-    int guess = int.parse(guessedNumber.text);
-    if (guess.toString().length > 8) {
+    int guess = int.parse(guessedbinary.text);
+    if (guess.toString().length > 5) {
       makeToast("Your binary is too long!");
-      guessedNumber.clear();
+      guessedbinary.clear();
       return;
     }
 
-    numberOfTries++;
+  numberOfTries++;
 
-  if (guess != evar){
+  if(guess == evar){
+    makeToast("That's correct, you earn an E.");
+      setState((){
+        x = '20';
+        });
+      guessedbinary.clear();
+
+  }else if (guess == ovar) {
+       makeToast("That's correct, you earn an O.");
+    setState((){
+      x = '12';
+    });
+    guessedbinary.clear();
+
+  } else if (guess == hvar){
+    makeToast("That's correct, you earn an H. Congrats! You have collected all the letters. The projector turns on");
+    guessedbinary.clear();
+
+  } else if (guess != evar && guess != ovar && guess != hvar){
     if(numberOfTimes == numberOfTries){
-      makeToast('Aww you ran out of tries, but here is an E');
+      makeToast('Aww you ran out of tries, but here is an letter');
       numberOfTries = 0;
-      guessedNumber.clear();
+      guessedbinary.clear();
       return;
     }
     makeToast("Try again, your number of tries is $numberOfTries");
-  } else{
-    makeToast("That's correct, you earn an E.");
-      x = '79';
-      guessedNumber.clear();
-
   }
-
-  if (guess != ovar){
-    if(numberOfTimes == numberOfTries){
-      makeToast('Aww you ran out of tries, but here is an O');
-      numberOfTries = 0;
-      guessedNumber.clear();
-      return;
-    }
-      makeToast("Try again, your number of tries is $numberOfTries");
-  } else{
-    makeToast("That's correct, you earn an O.");
-    x = '72';
-    guessedNumber.clear();
-  }
-
- if (guess != hvar){
-   if(numberOfTimes == numberOfTries){
-      makeToast('Aww you ran out of tries, but here is an H');
-      numberOfTries = 0;
-      guessedNumber.clear();
-      return;
-    }
-      makeToast("Try again, your number of tries is $numberOfTries");
-  } else{
-    makeToast("That's correct, you earn an H. Congrats! You have collected all the letters. The projector turns on");
-    guessedNumber.clear();
-  }
-
   }
 
   void makeToast(String feedback) {
@@ -168,59 +153,7 @@ class _Room1BottomPageState  extends State<Room1BottomPage>  {
   }
 
   bool isEmpty() {
-    return guessedNumber.text.isEmpty;
+    return guessedbinary.text.isEmpty;
   }
 }
 
-
-
-// class _Room1BottomPageState extends State<Room1BottomPage> {
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       body: Container(
-//         decoration: new BoxDecoration(color: Colors.white),
-//           child: Stack(
-//             children: <Widget>[
-//               Positioned.fill(
-//                 child: Align(
-//                   alignment: Alignment.bottomCenter,
-//                   child: inputText((String text){
-//                       print(text);
-//                   }),
-//                 ),
-//               ),
-//               // Positioned.fill(
-//               //   child: Align(
-//               //     alignment: Alignment.topCenter,
-//               //     child: FloatingActionButton(
-//               //       heroTag: 'Up',
-//               //       onPressed: () {
-//               //         Navigator.pop(context);
-//               //       },
-//               //       tooltip: 'Up',
-//               //       child: Icon(Icons.keyboard_arrow_up),
-//               //     ),
-//               //   ),
-//               // ),
-//             ],
-//         ),
-//       ),
-//     );
-//   }
-// }
-
-// Widget inputText(Function doSomething) {
-//   return Column(
-//     children: [
-//       Container(
-//         width: 200,
-//         child: TextField(
-//           onChanged: (text) {
-//             doSomething(text);
-//           },
-//         ),
-//       )
-//     ],
-//   );
-// }
