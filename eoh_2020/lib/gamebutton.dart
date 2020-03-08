@@ -8,5 +8,5 @@ class GameButton {
   bool correct;
 
   GameButton(
-      {this.id,this.icon, this.enabled = false,this.number,this.correct = true});
+      {this.id, this.icon, this.enabled = false, this.number, this.correct});
 }
