@@ -91,15 +91,15 @@ class _SudokuPageState extends State<SudokuPage> {
     for (int i = 0; i < buttonsList.length; i++) {
       if (buttonsList[i].correct == false) {
         Fluttertoast.showToast(
-            msg: "false?",
+            msg: "Try again?",
             toastLength: Toast.LENGTH_LONG,
             gravity: ToastGravity.TOP,
-            fontSize: 12);
+            fontSize: 15);
         return;
       }
     }
     Fluttertoast.showToast(
-        msg: "correct,the code is ____",
+        msg: "Congratulations,the code is ____",
         toastLength: Toast.LENGTH_LONG,
         gravity: ToastGravity.TOP,
         fontSize: 15);
