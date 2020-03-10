@@ -134,7 +134,7 @@ class PuzzleHomeState extends State
   }
 
   void _onTick(Duration elapsed) {
-    if (elapsed == Duration.zero) {
+    if (elapsed == Duration.zero || _lastElapsed == null) {
       _lastElapsed = elapsed;
     }
     final delta = elapsed - _lastElapsed;
