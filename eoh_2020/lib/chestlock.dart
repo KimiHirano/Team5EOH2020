@@ -79,7 +79,7 @@ class _Room1RightPageChestState extends State<Room1RightPageChest> {
     );
   }
 
-  void validateStatus(BuildContext context){
+  validateStatus(BuildContext context){
 
     if(!GlobalUtils.hasUserProgressedPast(2)){
 
@@ -99,7 +99,7 @@ class _Room1RightPageChestState extends State<Room1RightPageChest> {
     }
   }
 
-  void validatePIN(String pin, BuildContext context){
+  validatePIN(String pin, BuildContext context){
     String expected = '1234';
     if(pin == expected){
        GlobalUtils.setUserProgress(3); //SOLVED_CHEST

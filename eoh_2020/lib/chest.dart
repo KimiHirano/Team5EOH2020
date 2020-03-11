@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'GlobalUtils.dart';
+import 'room1left.dart';
 
 class Chest extends StatefulWidget {
 
@@ -42,6 +43,14 @@ class _ChestState extends State<Chest> {
         content: Text('Icard collected.\nYou can now unlock the door.',
                       style: TextStyle(fontSize: 20)
                   ),
+        action: SnackBarAction(
+          label: "OK",
+          onPressed: () {
+            Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => Room1LeftPage())
+                  );
+          },
+        ),
      );
         _scaffoldKey.currentState.showSnackBar(snackBar);
    }
