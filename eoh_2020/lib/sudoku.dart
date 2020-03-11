@@ -109,7 +109,7 @@ class _SudokuPageState extends State<SudokuPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(title: Text('Welcome to Soduku')),
+        appBar: AppBar(title: Text('Welcome to Sudoku')),
         body: Column(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: <Widget>[
