@@ -2,6 +2,8 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:pinput/pin_put/pin_put.dart';
+import 'chest.dart';
+import 'GlobalUtils.dart';
 
 class Room1RightPageChest extends StatefulWidget {
 
@@ -10,12 +12,23 @@ class Room1RightPageChest extends StatefulWidget {
 }
 
 class _Room1RightPageChestState extends State<Room1RightPageChest> {
-  List<int> userInput = [];
-  List<int> expected = [];
+  final _scaffoldKey = GlobalKey<ScaffoldState>();
+  
+  @override 
+  void initState(){
+    super.initState();
+    _validateStatus();
+  }
+  
+  _validateStatus() async {
+    validateStatus(context);
+  }
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
+      key: _scaffoldKey,
       body: Stack(
         children: <Widget>[
           Center(
@@ -27,6 +40,7 @@ class _Room1RightPageChestState extends State<Room1RightPageChest> {
           ),
           Container(
             color: Color.fromRGBO(0, 0, 0, 0.8),
+            
           ),
           Padding(
               padding: const EdgeInsets.all(40.0),
@@ -42,7 +56,7 @@ class _Room1RightPageChestState extends State<Room1RightPageChest> {
                     ),
                   ),
                   textStyle: TextStyle(color: Colors.white),
-                  onSubmit: (String pin) => validate(pin, context),
+                  onSubmit: (String pin) => validatePIN(pin, context),
                 ),
               ),
           ),
@@ -65,30 +79,40 @@ class _Room1RightPageChestState extends State<Room1RightPageChest> {
     );
   }
 
-  // void createCircle(){
-  //   new Container(
-  //     decoration: new B,
-  //   );
-  // }
+  void validateStatus(BuildContext context){
 
-  void validate(String pin, BuildContext context){
+    if(!GlobalUtils.hasUserProgressedPast(2)){
+
+      Widget okButton = FlatButton(
+        onPressed: () {Navigator.of(context).pop();}, 
+        child: Text('OK')
+      );
+
+      showDialog(
+        context: context,
+        builder: (context) => AlertDialog(
+          title: Text('WARNING'),
+          content: Text('Sorry, look like you haven''t solved all the puzzle yet.'),
+          actions: <Widget>[okButton],
+          )
+      );
+    }
+  }
+
+  void validatePIN(String pin, BuildContext context){
     String expected = '1234';
-    
-    final snackBar = SnackBar(
-      duration: Duration(seconds: 5),
-      content: Container(
-        height: 80.0,
-        child: Center(
-          child: Text('Wrong input. Value: $pin,',
-          style:  TextStyle(fontSize: 25.0, 
-                  color: Colors.white
-                  ),  
-          ),
-        ),
-      ),
-      backgroundColor: Colors.lightGreenAccent,
-    );
-    Scaffold.of(context).showSnackBar(snackBar);
+    if(pin == expected){
+       GlobalUtils.setUserProgress(3); //SOLVED_CHEST
+       Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => Chest()),);
+    }else{
+      final snackBar = SnackBar(
+        content: Text('Wrong input. Value: $pin.\nPlease try again.',
+                      style: TextStyle(fontSize: 20)
+                  ),
+      );
+      _scaffoldKey.currentState.showSnackBar(snackBar);
+    }
   }
 }
 //   Widget patternlock() {
