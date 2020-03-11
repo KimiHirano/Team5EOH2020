@@ -27,7 +27,7 @@ class _SudokuPageState extends State<SudokuPage> {
       new GameButton(
           id: 23, icon: Image.asset('images/3.png'), enabled: false, number: 3),
       new GameButton(
-          id: 25, icon: Image.asset('images/4.jpg'), enabled: false, number: 4),
+          id: 25, icon: Image.asset('images/4.png'), enabled: false, number: 4),
     ];
     return selectButtons;
   }
@@ -41,7 +41,7 @@ class _SudokuPageState extends State<SudokuPage> {
       new GameButton(
           id: 4, icon: Image.asset('images/3.png'), number: 3, correct: true),
       new GameButton(
-          id: 5, icon: Image.asset('images/4.jpg'), number: 4, correct: true),
+          id: 5, icon: Image.asset('images/4.png'), number: 4, correct: true),
       new GameButton(id: 6, enabled: true, number: 3, correct: false),
       new GameButton(id: 7, enabled: true, number: 1, correct: false),
       new GameButton(
@@ -126,7 +126,8 @@ class _SudokuPageState extends State<SudokuPage> {
                       width: 50.0,
                       height: 50.0,
                       child: Material(
-                          color: Colors.green,
+                          shape: CircleBorder(),
+                          color: Colors.white,
                           elevation: 4.0,
                           child: GestureDetector(
                             onTap: buttonsList[i].enabled
@@ -152,7 +153,8 @@ class _SudokuPageState extends State<SudokuPage> {
                         shape: BoxShape.circle,
                       ),
                       child: Material(
-                        color: Colors.green,
+                        shape: CircleBorder(),
+                        color: Colors.white,
                         elevation: 4.0,
                         child: GestureDetector(
                           onTap: !selectedList[i].enabled
