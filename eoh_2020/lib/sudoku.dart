@@ -114,6 +114,18 @@ class _SudokuPageState extends State<SudokuPage> {
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: <Widget>[
             Container(
+              width: 380,
+              height: 380,
+              decoration: new BoxDecoration(
+                  gradient: LinearGradient(
+                      colors: [Colors.lightGreen[200], Colors.blue[100]],
+                      begin: const FractionalOffset(0.0, 0.0),
+                      end: const FractionalOffset(1.0, 0.0),
+                      stops: [0.0, 2.0],
+                      tileMode: TileMode.clamp),
+                  shape: BoxShape.rectangle,
+                  borderRadius: new BorderRadius.circular(25.0),
+                  border: Border.all(color: Colors.white10, width: 3)),
               child: GridView.builder(
                   shrinkWrap: true,
                   gridDelegate: new SliverGridDelegateWithFixedCrossAxisCount(
@@ -125,6 +137,11 @@ class _SudokuPageState extends State<SudokuPage> {
                   itemBuilder: (context, i) => Container(
                       width: 50.0,
                       height: 50.0,
+                      decoration: new BoxDecoration(
+                          color: Colors.white,
+                          shape: BoxShape.circle,
+                          border:
+                              Border.all(color: Colors.blue[200], width: 5)),
                       child: Material(
                           shape: CircleBorder(),
                           color: Colors.white,
@@ -137,6 +154,9 @@ class _SudokuPageState extends State<SudokuPage> {
                           )))),
             ),
             Container(
+              decoration: new BoxDecoration(
+                  shape: BoxShape.rectangle,
+                  border: Border.all(color: Colors.white, width: 3)),
               child: GridView.builder(
                   shrinkWrap: true,
                   gridDelegate: new SliverGridDelegateWithFixedCrossAxisCount(
@@ -149,9 +169,9 @@ class _SudokuPageState extends State<SudokuPage> {
                   itemBuilder: (context, i) => Container(
                       width: 100.0,
                       decoration: new BoxDecoration(
-                        color: Colors.white,
-                        shape: BoxShape.circle,
-                      ),
+                          color: Colors.white,
+                          shape: BoxShape.circle,
+                          border: Border.all(color: Colors.pink, width: 5)),
                       child: Material(
                         shape: CircleBorder(),
                         color: Colors.white,
@@ -168,9 +188,14 @@ class _SudokuPageState extends State<SudokuPage> {
                 child: RaisedButton(
                     child: new Text(
                       "check",
-                      style: new TextStyle(color: Colors.white, fontSize: 20.0),
+                      style: new TextStyle(
+                        color: Colors.white,
+                        fontSize: 20.0,
+                        fontStyle: FontStyle.italic,
+                        fontFamily: 'Impact',
+                      ),
                     ),
-                    color: Colors.red,
+                    color: Colors.lightBlueAccent[200],
                     padding: const EdgeInsets.all(20.0),
                     onPressed: checkGame,
                     shape: new RoundedRectangleBorder(
